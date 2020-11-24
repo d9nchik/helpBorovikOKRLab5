@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+        <link rel="shortcut icon" href="./images/pizzaIcon.svg">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <link rel="stylesheet" href="./css/navbar.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>YourPizza</title>
+    </head>
+
+    <body onload="loadd()">
+         <canvas  id="can">
+
+        </canvas> 
+        <div class="navbar-fixed ">
+            <nav class="deep-orange">
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a href="#" class="brand-logo">
+                            <img src="./img/img.png" alt="">
+                        </a>
+                        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                        <ul class="right hide-on-med-and-down">
+                            <li><a href="#about_us">About Us</a></li>
+                            <li><a href="#clients">Clients</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a class="oury" href="#catalog">Our Menu</a></li>
+                            <li><a class="acti" href="#acti">Stocks</a></li>
+                            <li> <div class="menu-openner"><span>0</span></div></li>
+                            <li><a class="pizzochka" href="#basket">🍕</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+          </div>
+          <!-- sidenav -->
+          <ul class="sidenav " id="mobile-demo">
+                <li><a href="#about_us_d"><span>About Us</span></a></li>
+                <li><a href="#"><span>Clients</span> </a></li>
+                <li><a href="#"><span>Services</span> </a></li>
+                <li><a href="#catalog"><span>Our Menu</span> </a></li>
+                <li><a href="#"><span>Contact</span> </a></li>
+        </ul>
+
+        <!-- slider -->
+        <div class="slider">
+                <ul class="slides">
+                  <li>
+                    <img src="./img/slider/1.jpg"> <!-- random image -->
+                    <div class="caption right-align kanan" id="caption">
+                      <h3>"There's no better </h3>
+                      <h5 class="light grey-text text-lighten-3">feeling in the world than a warm pizza box on your lap."
+                            <br>-Kevin James</h5>
+                    </div>
+                  </li>
+                  <li>
+                        <img src="./img/slider/2.jpg"> <!-- random image -->
+                        <div class="caption right-align kanan" id="caption">
+                          <h3>"I'm a huge pasta <br> and <br> pizza lover.</h3>
+                          <h5 class="light grey-text text-lighten-3">I can eat those every single day."
+                               <br> -Shay Mitchell</h5>
+                        </div>
+                  </li>
+                  <li>
+                        <img src="./img/slider/3.png"> <!-- random image -->
+                        <div class="caption center-align" id="caption">
+                          <h3>"The perfect lover</h3>
+                          <h5 class="light grey-text text-lighten-3">is one who turns into a pizza at 4:00 a.m."
+                               <br> -Charles Pierce</h5>
+                        </div>
+                  </li>
+                </ul>
+        </div id="about_us_d">
+        <!-- section -->
+        <section id="about_us">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m4 offset-m2 about">
+                        <h4>About Us</h4>
+                        <p>Just hearing the word "Pizzaa brings a smile to the face of just about every American. Whatever style or variety -- from thick, Chicago-style deep-dish pizza stuffed with gobs of cheese, sausage, and pepperoni to a thin-as-a-cracker crust topped with veggies -- pizza invariably makes it to the top of "favorite food" lists.</p>
+                    </div>
+                    <div class="col s12 m4 about">
+                        <img class="materialboxed" width="250" src="img/store.jpg">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+       
+        <!-- menu -->
+        <div class="models">
+            <div class="pizza-item">
+                <a href="">
+                    <div class="pizza-item--img"><img src="" /></div>
+                    <div class="pizza-item--add">+</div>
+                </a>
+                <div class="pizza-item--price"></div>
+                <div class="pizza-item--name"></div>
+                <div class="pizza-item--desc"></div>
+            </div>
+            <div class="cart--item">
+                <img src="" />
+                <div class="cart--item-nome"></div>
+                <div class="cart--item--qtarea">
+                    <button class="cart--item-qtmenos">-</button>
+                    <div class="cart--item--qt">1</div>
+                    <button class="cart--item-qtmais">+</button>
+                </div>
+            </div>
+        </div>
+        <main id='catalog'>
+            <h1 class="center light white-text">Our Menu</h1>
+            <h1 id = 'best'>Best Pizza</h1>
+            <div class="pizza-area1 pizza-area"></div>
+            <h1 id='cheapest'>Cheapest Pizza</h1>
+            <div class="pizza-area2 pizza-area"></div>
+            <h1 id='cheff'>Cheff Pizza</h1>
+            <div class="pizza-area3 pizza-area"></div>
+        </main>
+        <aside id = 'basket'>
+            <div class="cart--area">
+                <div class="menu-closer">❌</div>
+                <h1>Your Pizza</h1>
+                <div class="cart"></div>
+                <div class="cart--details">
+                    <div class="cart--totalitem subtotal">
+                        <span>Subtotal</span>
+                        <span></span>
+                    </div>
+                    <div class="cart--totalitem desconto">
+                        <span>Discount (-10%)</span>
+                        <span></span>
+                    </div>
+                    <div class="cart--totalitem total big">
+                        <span>Total</span>
+                        <span></span>
+                    </div>
+                    <form name="orderForm"  onsubmit="return validateForm()">
+                    <div class="form-group" id='cart'>
+                            <label for="name">Name: </label>
+                            <input type="text" id="name" class="customer-details form-control" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address: </label>
+                            <input type="text" id="address" class="customer-details form-control" placeholder="1234 Main Str">
+                        </div>
+                    <div class="form-group col-md-6">
+                        <label for="city">City: </label>
+                        <input type="text" id="city" class="customer-details form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="email">Email: </label>
+                        <input type="text" id="state" class="customer-details form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone:(format:+380 (XX)-XXX-XX-XX) </label>
+                        <input type="text" id="phone" class="customer-details form-control">
+                    </div>
+                    <button type="submit" class="btn btn-dark">Submit Order</button>
+                    </form>
+
+                    <div onClick="doTask()" class="cart--finalizar">Finalize purchase</div>
+                    <div class=""></div>
+
+                </div>
+            </div>
+        </aside>
+        <div class="serverError" id='serverError'>
+           <h1> Something goes wrong try again later</h1>
+        </div>
+        <div class="orderPage" id="order">
+            <h1 id = 'orderH'>Your order</h1>
+            <div class="orderId order--item">
+                <span>Id:</span>
+                <span></span>
+            </div>
+            <div class="orderPizzasList order--item">
+                <span>Pizzas:</span>
+                <span></span>
+            </div>
+            <div class="orderName order--item">
+                <span>Name: </span>
+                <span></span>
+            </div>
+            <div class="orderAdress order--item">
+                <span>Adress:</span>
+                <span></span>
+            </div>
+            <div class="orderCity order--item">
+                <span>City:</span>
+                <span></span>
+            </div>
+            <div class="orderPhone order--item">
+                <span>Phone:</span>
+                <span></span>
+            </div>
+            <button type="submit" onClick="closeOrder()" class="btn btn-dark">Close</button>
+
+        </div>
+        <div class="pizzaWindowArea">
+            <div class="pizzaWindowBody">
+                <div class="boxBack">
+                    <div class="pizzaInfo--cancelMobileButton">❌</div>
+                </div>
+                <div class="pizzaBig">
+                    <img src="" />
+                </div>
+                <div class="pizzaInfo">
+                    <h1>--</h1>
+                    <div class="pizzaInfo--desc"></div>
+                    <div class="pizzaInfo--sizearea">
+                        <div class="pizzaInfo--sector">Size</div>
+                        <div class="pizzaInfo--sizes">
+                            <div data-key="0" class="pizzaInfo--size">MINI<span></span></div>
+                            <div data-key="1" class="pizzaInfo--size">MEDIUM<span></span></div>
+                            <div data-key="2" class="pizzaInfo--size selected">KING-SIZE<span></span></div>
+                        </div>
+                    </div>
+                    <div class="pizzaInfo--pricearea">
+                        <div class="pizzaInfo--sector">Price</div>
+                        <div class="pizzaInfo--price">
+                            <div class="pizzaInfo--actualPrice"></div>
+                            <div class="pizzaInfo--qtarea">
+                                <button class="pizzaInfo--qtmenos">-</button>
+                                <div class="pizzaInfo--qt">1</div>
+                                <button class="pizzaInfo--qtmais">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pizzaInfo--addButton">Add to Cart</div>
+                    <div class="pizzaInfo--cancelButton">Cancel</div>
+                </div>
+            </div>
+        </div>
+        <div class="parallax-container">
+            <div class="parallax">
+            <img src="img/clients/background.jpg">
+            </div>
+            <section id="Stocks">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m4 offset-m2 about">
+                            <h4>Stocks</h4>
+                            <p>Pizza 1+ 1 = 2</p>
+                        </div>
+                        <div class="col s12 m4 about">
+                            <img class="materialboxed" width="250" src="img/acti.jpg">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            </section>
+             <!-- services -->
+            <section id="services">
+                    <div class="container">
+                        <h4 class="center light white-text">Services</h4>
+                        <div class="row">
+                            <div class="col12">
+                                <ul class="service">
+                                    <li>
+                                        <div class="col s4" id="dine">
+                                            <div class="card-panel center"><i class="medium material-icons">restaurant_menu</i>
+                                            <br>
+                                            <span>DINE IN</span></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="col s4">
+                                            <div class="card-panel center"><i class="medium material-icons">shop</i><br><span>TAKE IN</span></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="col s4">
+                                            <div class="card-panel center"><i class="medium material-icons">shopping_cart</i><br><span>DELIVERY</span></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col s12 m6" id="service_content">
+                            </div>                 
+                        </div>
+        
+                    </div>
+                </section>
+            </div>
+        </div>
+    
+        <script type="text/javascript" src="./js/pizzas.js"></script>
+        <script type="text/javascript" src="./js/script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="./js/main.js"></script>
+        <script src="./js/service.js"></script>
+    </body>
+  </html>
+        
