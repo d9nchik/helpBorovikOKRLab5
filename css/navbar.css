@@ -9,10 +9,12 @@ canvas {
     position: fixed;
     z-index: 1120;
 }
-.active{
-color:black;
+.rrr{
+    color: black;
 }
-
+label{
+    color: black;
+}
 .sidenav {
     background-color: rgba(240, 68, 0, 0.8);
 }
@@ -54,6 +56,7 @@ body {
     min-height: 100vh;
 }
 
+label
 .parallax-container {
     height: 100%;
 }
@@ -163,7 +166,9 @@ aside {
     transition: all ease 0.2s;
     overflow-x: hidden;
 }
-
+active{
+   color: black;
+}
 aside.show {
     width: 100%;
 }
