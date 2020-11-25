@@ -173,6 +173,7 @@ main {
 }
 h1 {
     font-family: "Hepta Slab", Helvetica, Arial;
+    border-bottom: 2px solid maroon;
 }
 .pizza-area {
     display: grid;
