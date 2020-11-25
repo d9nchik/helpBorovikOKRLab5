@@ -9,6 +9,9 @@ canvas {
     position: fixed;
     z-index: 1120;
 }
+.active{
+color:black;
+}
 
 .sidenav {
     background-color: rgba(240, 68, 0, 0.8);
