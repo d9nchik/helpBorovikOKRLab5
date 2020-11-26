@@ -3,6 +3,8 @@
     height: 10%;
     padding-top: 3px;
 }
+.col s12 m4 about{
+margin-left:315px;}
 
 canvas {
     background: white;
