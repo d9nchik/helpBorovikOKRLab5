@@ -4,20 +4,17 @@
 // по документації materialize слайдер
 document.addEventListener("DOMContentLoaded", function () {
     var sidenav = document.querySelectorAll(".sidenav")
-    var instances = M.Sidenav.init(sidenav, { edge: "left", draggable: true })
-
+    M.Sidenav.init(sidenav, { edge: "left", draggable: true });
     var slider = document.querySelectorAll(".slider")
-    var init_slider = M.Slider.init(slider, {
+    M.Slider.init(slider, {
         height: 400,
         indicators: false,
         interval: 4000,
-    })
-
+    });
     var MBox = document.querySelectorAll(".materialboxed")
-    var init_mbox = M.Materialbox.init(MBox)
-
+    M.Materialbox.init(MBox);
     var parallax = document.querySelectorAll(".parallax")
-    var init_parallax = M.Parallax.init(parallax)
+    M.Parallax.init(parallax);
 })
 // валідація
 // асинхронна функція (незалежно від програми, виконується зразу незалжно)
@@ -28,7 +25,7 @@ async function validateForm() {
     let city = document.orderForm.city.value
     let state = document.orderForm.state.value
     let phone = document.orderForm.phone.value
-    if (name == null || name == "") {
+    if (name == null || name === "") {
         alert("Name field can't be blank.")
         return false
     } else if (address === null || address === "") {
