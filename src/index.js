@@ -4,6 +4,7 @@ import './js/cart.js';
 import './js/service.js';
 import './js/order.js';
 import M from 'minimatch';
+import './css/main.css';
 
 //слайдер
 // по документації materialize слайдер
