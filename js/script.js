@@ -1,8 +1,4 @@
-//Global variables
-
-
-
-const closeModal = () => {
+export const closeModal = () => {
     document.querySelector(".pizzaWindowArea").style.opacity = 0
     setTimeout(() => {
         document.querySelector(".pizzaWindowArea").style.display = "none"

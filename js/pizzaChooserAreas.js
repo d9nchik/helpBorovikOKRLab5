@@ -1,29 +1,32 @@
 import {cart, updateCart} from "./cart.js";
+import {json1, json2, json3} from "./getJson.js";
+import {closeModal} from "./script.js";
 
 (function () {
     const correspondentAreasAndURLs = [
-        {area: '.pizza-area1', url: 'http://localhost:3000/pizzaJson1'},
-        {area: '.pizza-area2', url: 'http://localhost:3000/pizzaJson2'},
-        {area: '.pizza-area3', url: 'http://localhost:3000/pizzaJson3'},
+        {area: '.pizza-area1', data: json1},
+        {area: '.pizza-area2', data: json2},
+        {area: '.pizza-area3', data: json3},
     ];
     for (const correspondentAreasAndURL of correspondentAreasAndURLs) {
         getPizzaJson(correspondentAreasAndURL);
     }
 })();
 
-async function getPizzaJson({area, url}) {
-    const res = await fetch(url)
-    const pizzaJson1 = await res.json()
-    pizzaJson1.map((pizza, index) => {
-        let pizzaItem = pizzaBlockGenerator(index, pizza, pizzaJson1);
+async function getPizzaJson({area, data}) {
+    const pizzaJson = await data;
+    pizzaJson.map((pizza, index) => {
+        let pizzaItem = pizzaBlockGenerator(index, pizza, pizzaJson);
         document.querySelector(area).append(pizzaItem);
     })
 }
 
 let modalCount = 1
 let modalKey = 0;
-document.querySelector(".pizzaInfo--addButton").addEventListener("click", () => {
+
+document.querySelector(".pizzaInfo--addButton").addEventListener("click", async () => {
     let size = Number(document.querySelector(".pizzaInfo--size.selected").getAttribute("data-key"))
+    const pizzaJson1 = await json1;
     let Ident = pizzaJson1[modalKey].id + "@" + size
     let key = cart.findIndex((item) => item.Ident === Ident)
     if (key > -1) {
