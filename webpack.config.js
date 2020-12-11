@@ -15,6 +15,10 @@ const config = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
     },
+    devServer: {
+        liveReload: true,
+        hot: true,
+    },
     module: {
         rules: [
             {
