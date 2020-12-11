@@ -5,16 +5,16 @@ async function validateForm() {
     let city = document.orderForm.city.value
     let state = document.orderForm.state.value
     let phone = document.orderForm.phone.value
-    if (name == null || name === "") {
+    if (nonEmpty(name)) {
         alert("Name field can't be blank.")
         return false
-    } else if (address === null || address === "") {
+    } else if (nonEmpty(address)) {
         alert("Address field can't be blank.")
         return false
-    } else if (city === null || city === "") {
+    } else if (nonEmpty(city)) {
         alert("City field can't be blank.")
         return false
-    } else if (state === null || state === "") {
+    } else if (nonEmpty(state)) {
         alert("State field can't be blank.")
         return false
     } else if (
@@ -99,4 +99,8 @@ function showServerError() {
 
 function hideServerError() {
     document.querySelector(".serverError").style.display = "none"
+}
+
+function nonEmpty(item) {
+    return item === null || item === '';
 }
