@@ -3,6 +3,7 @@ import './pizzaChooserAreas.js';
 import "./cart.js";
 import './service.js';
 import './order.js';
+import M from "minimatch";
 
 //слайдер
 // по документації materialize слайдер
