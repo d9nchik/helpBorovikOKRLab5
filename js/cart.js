@@ -1,3 +1,5 @@
+import {closeModal} from "./script.js";
+
 export let cart = JSON.parse(localStorage.getItem("session"))
     ? JSON.parse(localStorage.getItem("session"))
     : [];
@@ -109,5 +111,7 @@ export function doTask() {
     localStorage.setItem("session", JSON.stringify(cart))
     alert("Pizza be pordered")
     updateCart()
-    closeModal()
+    closeModal();
 }
+
+document.querySelector('.cart--finalizar').addEventListener('click', doTask);
