@@ -13,102 +13,19 @@ async function getPizzaJson1() {
     let res = await fetch("http://localhost:3000/pizzaJson1")
     const pizzaJson1 = await res.json()
     pizzaJson1.map((pizza, index) => {
-        let pizzaItem = qs(".models .pizza-item").cloneNode(true)
-        pizzaItem.setAttribute("data-key", index)
-        pizzaItem.querySelector(".pizza-item--img img").src = pizza.img //Consegue-se usar a class e a tag num mesmo querySelector
-        pizzaItem.querySelector(
-            ".pizza-item--price"
-        ).innerHTML = pizza.price.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "EUR",
-        })
-        pizzaItem.querySelector(".pizza-item--name").innerHTML = pizza.name
-        pizzaItem.querySelector(".pizza-item--desc").innerHTML =
-            pizza.description
-        pizzaItem.querySelector("a").addEventListener("click", (e) => {
-            // відміна перезагрузки(обичної поведінки)
-            e.preventDefault()
-            let key = e.target.closest(".pizza-item").getAttribute("data-key")
-            const pizzaKey = pizzaJson1[key]
-            modalCount = 1
-            modalKey = key
-
-            qs(".pizzaBig img").src = pizzaKey.img
-            qs(".pizzaInfo h1").innerHTML = pizzaKey.name
-            qs(".pizzaInfo--desc").innerHTML = pizzaKey.description
-            qs(
-                ".pizzaInfo--actualPrice"
-            ).innerHTML = pizzaKey.price.toLocaleString("pt-BR", {
-                style: "currency",
-                currency: "EUR",
-            })
-            qs(".pizzaInfo--size.selected").classList.remove("selected")
-            qs(".pizzaInfo--qt").innerHTML = modalCount
-            qsa(".pizzaInfo--size").forEach((size, sizeIndex) => {
-                if (sizeIndex === 2) size.classList.add("selected")
-
-                size.querySelector("span").innerHTML = pizzaJson1[key].sizes[sizeIndex]
-            })
-
-            qs(".pizzaWindowArea").style.opacity = 0
-            qs(".pizzaWindowArea").style.display = "flex"
-            setTimeout(() => {
-                qs(".pizzaWindowArea").style.opacity = 1
-            }, 200)
-        })
-
-        qs(".pizza-area1").append(pizzaItem)
+        let pizzaItem = pizzaBlockGenerator(index, pizza, pizzaJson1);
+        qs(".pizza-area1").append(pizzaItem);
     })
 }
 
 getPizzaJson1()
 
+
 async function getPizzaJson2() {
     let res = await fetch("http://localhost:3000/pizzaJson2")
     const pizzaJson2 = await res.json()
     pizzaJson2.map((pizza, index) => {
-        let pizzaItem = qs(".models .pizza-item").cloneNode(true)
-        pizzaItem.setAttribute("data-key", index)
-        pizzaItem.querySelector(".pizza-item--img img").src = pizza.img //Consegue-se usar a class e a tag num mesmo querySelector
-        pizzaItem.querySelector(
-            ".pizza-item--price"
-        ).innerHTML = pizza.price.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "EUR",
-        })
-        pizzaItem.querySelector(".pizza-item--name").innerHTML = pizza.name
-        pizzaItem.querySelector(".pizza-item--desc").innerHTML =
-            pizza.description
-        pizzaItem.querySelector("a").addEventListener("click", (e) => {
-            e.preventDefault()
-            let key = e.target.closest(".pizza-item").getAttribute("data-key")
-            const pizzaKey = pizzaJson2[key]
-            modalCount = 1
-            modalKey = key
-
-            qs(".pizzaBig img").src = pizzaKey.img
-            qs(".pizzaInfo h1").innerHTML = pizzaKey.name
-            qs(".pizzaInfo--desc").innerHTML = pizzaKey.description
-            qs(
-                ".pizzaInfo--actualPrice"
-            ).innerHTML = pizzaKey.price.toLocaleString("pt-BR", {
-                style: "currency",
-                currency: "EUR",
-            })
-            qs(".pizzaInfo--size.selected").classList.remove("selected")
-            qs(".pizzaInfo--qt").innerHTML = modalCount
-            qsa(".pizzaInfo--size").forEach((size, sizeIndex) => {
-                if (sizeIndex === 2) size.classList.add("selected")
-
-                size.querySelector("span").innerHTML = pizzaJson2[key].sizes[sizeIndex]
-            })
-
-            qs(".pizzaWindowArea").style.opacity = 0
-            qs(".pizzaWindowArea").style.display = "flex"
-            setTimeout(() => {
-                qs(".pizzaWindowArea").style.opacity = 1
-            }, 200)
-        })
+        let pizzaItem = pizzaBlockGenerator(index, pizza, pizzaJson2);
 
         qs(".pizza-area2").append(pizzaItem)
     })
@@ -120,50 +37,8 @@ async function getPizzaJson3() {
     let res = await fetch("http://localhost:3000/pizzaJson3")
     const pizzaJson3 = await res.json()
     pizzaJson3.map((pizza, index) => {
-        let pizzaItem = qs(".models .pizza-item").cloneNode(true)
-        pizzaItem.setAttribute("data-key", index)
-        pizzaItem.querySelector(".pizza-item--img img").src = pizza.img //Consegue-se usar a class e a tag num mesmo querySelector
-        pizzaItem.querySelector(
-            ".pizza-item--price"
-        ).innerHTML = pizza.price.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "EUR",
-        })
-        pizzaItem.querySelector(".pizza-item--name").innerHTML = pizza.name
-        pizzaItem.querySelector(".pizza-item--desc").innerHTML =
-            pizza.description
-        pizzaItem.querySelector("a").addEventListener("click", (e) => {
-            e.preventDefault()
-            let key = e.target.closest(".pizza-item").getAttribute("data-key")
-            const pizzaKey = pizzaJson3[key]
-            modalCount = 1
-            modalKey = key
-
-            qs(".pizzaBig img").src = pizzaKey.img
-            qs(".pizzaInfo h1").innerHTML = pizzaKey.name
-            qs(".pizzaInfo--desc").innerHTML = pizzaKey.description
-            qs(
-                ".pizzaInfo--actualPrice"
-            ).innerHTML = pizzaKey.price.toLocaleString("pt-BR", {
-                style: "currency",
-                currency: "EUR",
-            })
-            qs(".pizzaInfo--size.selected").classList.remove("selected")
-            qs(".pizzaInfo--qt").innerHTML = modalCount
-            qsa(".pizzaInfo--size").forEach((size, sizeIndex) => {
-                if (sizeIndex === 2) size.classList.add("selected")
-
-                size.querySelector("span").innerHTML = pizzaJson3[key].sizes[sizeIndex]
-            })
-
-            qs(".pizzaWindowArea").style.opacity = 0
-            qs(".pizzaWindowArea").style.display = "flex"
-            setTimeout(() => {
-                qs(".pizzaWindowArea").style.opacity = 1
-            }, 200)
-        })
-
-        qs(".pizza-area3").append(pizzaItem)
+        let pizzaItem = pizzaBlockGenerator(index, pizza, pizzaJson3);
+        qs(".pizza-area3").append(pizzaItem);
     })
 }
 
@@ -380,4 +255,50 @@ function doTask() {
     alert("Pizza be pordered")
     updateCart()
     closeModal()
+}
+
+function pizzaBlockGenerator(index, pizza, pizzaJson) {
+    let pizzaItem = qs(".models .pizza-item").cloneNode(true)
+    pizzaItem.setAttribute("data-key", index)
+    pizzaItem.querySelector(".pizza-item--img img").src = pizza.img //Consegue-se usar a class e a tag num mesmo querySelector
+    pizzaItem.querySelector(
+        ".pizza-item--price"
+    ).innerHTML = pizza.price.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "EUR",
+    })
+    pizzaItem.querySelector(".pizza-item--name").innerHTML = pizza.name
+    pizzaItem.querySelector(".pizza-item--desc").innerHTML =
+        pizza.description
+    pizzaItem.querySelector("a").addEventListener("click", (e) => {
+        e.preventDefault()
+        let key = e.target.closest(".pizza-item").getAttribute("data-key")
+        const pizzaKey = pizzaJson[key]
+        modalCount = 1
+        modalKey = key
+
+        qs(".pizzaBig img").src = pizzaKey.img
+        qs(".pizzaInfo h1").innerHTML = pizzaKey.name
+        qs(".pizzaInfo--desc").innerHTML = pizzaKey.description
+        qs(
+            ".pizzaInfo--actualPrice"
+        ).innerHTML = pizzaKey.price.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "EUR",
+        })
+        qs(".pizzaInfo--size.selected").classList.remove("selected")
+        qs(".pizzaInfo--qt").innerHTML = modalCount
+        qsa(".pizzaInfo--size").forEach((size, sizeIndex) => {
+            if (sizeIndex === 2) size.classList.add("selected")
+
+            size.querySelector("span").innerHTML = pizzaJson[key].sizes[sizeIndex]
+        })
+
+        qs(".pizzaWindowArea").style.opacity = 0
+        qs(".pizzaWindowArea").style.display = "flex"
+        setTimeout(() => {
+            qs(".pizzaWindowArea").style.opacity = 1
+        }, 200)
+    })
+    return pizzaItem;
 }
