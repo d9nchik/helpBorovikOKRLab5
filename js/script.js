@@ -9,14 +9,6 @@ console.log(cart)
 const qs = (e) => document.querySelector(e)
 const qsa = (e) => document.querySelectorAll(e)
 
-// додає піци до html
-function loadd() {
-    let urlToCheck = window.location.href
-    if (urlToCheck.indexOf("?") === -1) {
-        window.location.href += "?#"
-    }
-}
-
 async function getPizzaJson1() {
     let res = await fetch("http://localhost:3000/pizzaJson1")
     const pizzaJson1 = await res.json()
@@ -73,7 +65,7 @@ getPizzaJson1()
 
 async function getPizzaJson2() {
     let res = await fetch("http://localhost:3000/pizzaJson2")
-    pizzaJson2 = await res.json()
+    const pizzaJson2 = await res.json()
     pizzaJson2.map((pizza, index) => {
         let pizzaItem = qs(".models .pizza-item").cloneNode(true)
         pizzaItem.setAttribute("data-key", index)
@@ -126,7 +118,7 @@ getPizzaJson2()
 
 async function getPizzaJson3() {
     let res = await fetch("http://localhost:3000/pizzaJson3")
-    pizzaJson3 = await res.json()
+    const pizzaJson3 = await res.json()
     pizzaJson3.map((pizza, index) => {
         let pizzaItem = qs(".models .pizza-item").cloneNode(true)
         pizzaItem.setAttribute("data-key", index)
@@ -243,7 +235,7 @@ qs(".menu-closer").addEventListener(
 // корзина
 async function updateCart() {
     let res = await fetch("http://localhost:3000/pizzaJson1")
-    pizzaJson1 = await res.json()
+    const pizzaJson1 = await res.json()
     qs(".menu-openner span").innerHTML = cart.length
 
     if (cart.length > 0) {

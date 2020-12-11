@@ -1,10 +1,10 @@
-// const { exit } = require("process")
-
+import './service.js';
+import './script.js';
 //слайдер
 // по документації materialize слайдер
 document.addEventListener("DOMContentLoaded", function () {
     var sidenav = document.querySelectorAll(".sidenav")
-    M.Sidenav.init(sidenav, { edge: "left", draggable: true });
+    M.Sidenav.init(sidenav, {edge: "left", draggable: true});
     var slider = document.querySelectorAll(".slider")
     M.Slider.init(slider, {
         height: 400,
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // валідація
 // асинхронна функція (незалежно від програми, виконується зразу незалжно)
 async function validateForm() {
-    
+
     let name = document.orderForm.name.value
     let address = document.orderForm.address.value
     let city = document.orderForm.city.value
@@ -69,7 +69,7 @@ async function validateForm() {
         })
         showOrder()
 
-    let currentUrl = location.href
+        let currentUrl = location.href
         let newUrl = currentUrl.split("#")[0]
         location.href = newUrl + "#order"
         qs(".orderId span:last-child").innerHTML = id.toLocaleString(
@@ -108,12 +108,26 @@ async function validateForm() {
 function closeOrder() {
     qs(".orderPage").style.display = "none"
 }
+
 function showOrder() {
     qs(".orderPage").style.display = "block"
 }
+
 function showServerError() {
     qs(".serverError").style.display = "block"
 }
+
 function hideServerError() {
     qs(".serverError").style.display = "none"
 }
+
+// додає піци до html
+function load() {
+    let urlToCheck = window.location.href
+    if (urlToCheck.indexOf("?") === -1) {
+        window.location.href += "?#"
+    }
+}
+
+document.getElementsByTagName('body')[0].addEventListener('load', load);
+
