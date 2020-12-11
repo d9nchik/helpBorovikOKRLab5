@@ -24,7 +24,7 @@ label{
     color: aliceblue;
 }
 
-.slides #caption {
+.slides .caption {
     text-shadow: 1px 1px 3px black;
     border-radius: 25px;
 }
@@ -46,7 +46,7 @@ label{
 
 #about_us {
     color: aliceblue;
-    text-shadow: 0px 0px 2px black;
+    text-shadow: 0 0 2px black;
 }
 
 body {
@@ -82,12 +82,12 @@ label
 
 .card-panel i {
     color: aliceblue;
-    text-shadow: 0px 0px 2px black;
+    text-shadow: 0 0 2px black;
 }
 
 .card-panel span {
     color: aliceblue;
-    text-shadow: 0px 0px 2px black;
+    text-shadow: 0 0 2px black;
 }
 
 #menu img {
@@ -105,12 +105,12 @@ label
     height: 20%;
     width: 80%;
     color: white;
-    text-shadow: 0px 0px 1px black;
+    text-shadow: 0 0 1px black;
 }
 
 #menu p {
     color: white;
-    text-shadow: 0px 0px 1px black;
+    text-shadow: 0 0 1px black;
     height: 20%;
     width: 80%;
 }
@@ -141,7 +141,7 @@ label
 
 .menu-openner {
     font-size: 26px;
-    padding: 0px 0px 0px 20px;
+    padding: 0 0 0 20px;
 }
 .menu-openner span {
     margin-right: 10px;
@@ -155,7 +155,7 @@ label
 
 .ordered {
     background-color: #9ccbe6;
-    width: 0vw;
+    width: 0;
     font-family: "Hepta Slab", Helvetica, Arial;
     transition: all ease 0.2s;
     overflow-x: hidden;
@@ -163,7 +163,7 @@ label
 
 aside {
     background-color: #ff8a65;
-    width: 0vw;
+    width: 0;
     font-family: "Hepta Slab", Helvetica, Arial;
     transition: all ease 0.2s;
     overflow-x: hidden;
@@ -211,7 +211,7 @@ h1 {
     height: 200px;
     background-color: #eee;
     border-radius: 100px;
-    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
 }
 .pizza-item--img img {
     width: 100%;
@@ -267,9 +267,9 @@ h1 {
     width: 900px;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0px 0px 15px #999;
+    box-shadow: 0 0 15px #999;
     display: flex;
-    margin: 20px 0px;
+    margin: 20px 0;
 }
 .pizzaBig {
     flex: 1;
@@ -356,14 +356,14 @@ h1 {
     font-size: 17px;
     outline: 0;
     cursor: pointer;
-    padding: 0px 10px;
+    padding: 0 10px;
     color: #333;
 }
 .pizzaInfo--qt {
     line-height: 30px;
     font-size: 12px;
     font-weight: bold;
-    padding: 0px 5px;
+    padding: 0 5px;
     color: #000;
 }
 .pizzaInfo--addButton {
@@ -430,14 +430,14 @@ h1 {
     font-size: 17px;
     outline: 0;
     cursor: pointer;
-    padding: 0px 10px;
+    padding: 0 10px;
     color: #333;
 }
 .cart--item--qt {
     line-height: 30px;
     font-size: 12px;
     font-weight: bold;
-    padding: 0px 5px;
+    padding: 0 5px;
     color: #000;
 }
 .cart--totalitem {
@@ -570,7 +570,7 @@ h1 {
     }
     .pizzaInfo--qtarea button {
         font-size: 25px;
-        padding: 0px 25px;
+        padding: 0 25px;
     }
     .pizzaInfo--qt {
         line-height: 60px;
