@@ -1,5 +1,7 @@
-import './service.js';
 import './script.js';
+import './pizzaChooserAreas.js';
+import './service.js';
+
 //слайдер
 // по документації materialize слайдер
 document.addEventListener("DOMContentLoaded", function () {
@@ -17,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     M.Parallax.init(parallax);
 })
 // валідація
-// асинхронна функція (незалежно від програми, виконується зразу незалжно)
+// асинхронна функція (незалежно від програми, виконується зразу незалежно)
 async function validateForm() {
 
     let name = document.orderForm.name.value
