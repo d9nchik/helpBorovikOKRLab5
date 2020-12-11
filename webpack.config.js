@@ -10,6 +10,7 @@ const CssMinimizer = require('css-minimizer-webpack-plugin');
 
 const config = {
     entry: ['babel-polyfill', './src/index.js'],
+    devtool: 'inline-source-map',
     output: {
         // eslint-disable-next-line no-undef
         path: path.resolve(__dirname, 'dist'),
