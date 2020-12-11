@@ -1,5 +1,5 @@
-async function validateForm() {
-
+async function validateForm(e) {
+    e.preventDefault();
     let name = document.orderForm.name.value
     let address = document.orderForm.address.value
     let city = document.orderForm.city.value
@@ -104,3 +104,6 @@ function hideServerError() {
 function nonEmpty(item) {
     return item === null || item === '';
 }
+
+document.querySelector('form').addEventListener('submit', validateForm);
+document.querySelector('div.order button').addEventListener('click', closeOrder);

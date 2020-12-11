@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>YourPizza</title>
 </head>
-
+<body>
 <canvas id="can">
 
 </canvas>
@@ -141,7 +141,7 @@
                 <span>Total</span>
                 <span></span>
             </div>
-            <form name="orderForm" onsubmit="return validateForm()">
+            <form name="orderForm">
                 <div class="form-group" id='cart'>
                     <label for="name">Name: </label>
                     <input type="text" id="name" class="customer-details form-control" placeholder="Enter your name">
@@ -200,7 +200,7 @@
         <span class="rrr">Phone:</span>
         <span></span>
     </div>
-    <button type="submit" onClick="closeOrder()" class="btn btn-dark">Close</button>
+    <button type="submit" class="btn btn-dark">Close</button>
 
 </div>
 <div class="pizzaWindowArea">
