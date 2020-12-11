@@ -106,4 +106,4 @@ function nonEmpty(item) {
 }
 
 document.querySelector('form').addEventListener('submit', validateForm);
-document.querySelector('div.order button').addEventListener('click', closeOrder);
+document.querySelector('div#order button').addEventListener('click', closeOrder);

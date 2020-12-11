@@ -752,6 +752,24 @@
       "city": "tutut",
       "state": "asdvags!@gmail.com",
       "phone": "+380 (55)-555-55-55"
+    },
+    {
+      "id": "f17652fbc939",
+      "pizzas": "Calabresa",
+      "name": "d",
+      "address": "Arzeulova, 16",
+      "city": "d",
+      "state": "asd",
+      "phone": "+380 (96)-588-15-25"
+    },
+    {
+      "id": "f17652fd1658",
+      "pizzas": "Calabresa,Caprichoza",
+      "name": "d",
+      "address": "d",
+      "city": "d",
+      "state": "asd",
+      "phone": "+380 (96)-588-15-25"
     }
   ]
 }

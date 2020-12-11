@@ -2,6 +2,7 @@ import './script.js';
 import './pizzaChooserAreas.js';
 import "./cart.js";
 import './service.js';
+import './order.js';
 
 //слайдер
 // по документації materialize слайдер
