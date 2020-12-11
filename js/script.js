@@ -6,40 +6,25 @@ let cart = JSON.parse(localStorage.getItem("session"))
     ? JSON.parse(localStorage.getItem("session"))
     : [];
 
-async function getPizzaJson1() {
-    let res = await fetch("http://localhost:3000/pizzaJson1")
+(function () {
+    const correspondentAreasAndURLs = [
+        {area: '.pizza-area1', url: 'http://localhost:3000/pizzaJson1'},
+        {area: '.pizza-area2', url: 'http://localhost:3000/pizzaJson2'},
+        {area: '.pizza-area3', url: 'http://localhost:3000/pizzaJson3'},
+    ];
+    for (const correspondentAreasAndURL of correspondentAreasAndURLs) {
+        getPizzaJson(correspondentAreasAndURL);
+    }
+})();
+
+async function getPizzaJson({area, url}) {
+    const res = await fetch(url)
     const pizzaJson1 = await res.json()
     pizzaJson1.map((pizza, index) => {
         let pizzaItem = pizzaBlockGenerator(index, pizza, pizzaJson1);
-        document.querySelector(".pizza-area1").append(pizzaItem);
+        document.querySelector(area).append(pizzaItem);
     })
 }
-
-getPizzaJson1()
-
-
-async function getPizzaJson2() {
-    let res = await fetch("http://localhost:3000/pizzaJson2")
-    const pizzaJson2 = await res.json()
-    pizzaJson2.map((pizza, index) => {
-        let pizzaItem = pizzaBlockGenerator(index, pizza, pizzaJson2);
-
-        document.querySelector(".pizza-area2").append(pizzaItem)
-    })
-}
-
-getPizzaJson2()
-
-async function getPizzaJson3() {
-    let res = await fetch("http://localhost:3000/pizzaJson3")
-    const pizzaJson3 = await res.json()
-    pizzaJson3.map((pizza, index) => {
-        let pizzaItem = pizzaBlockGenerator(index, pizza, pizzaJson3);
-        document.querySelector(".pizza-area3").append(pizzaItem);
-    })
-}
-
-getPizzaJson3()
 
 const closeModal = () => {
     document.querySelector(".pizzaWindowArea").style.opacity = 0
