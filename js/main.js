@@ -1,5 +1,6 @@
 import './script.js';
 import './pizzaChooserAreas.js';
+import "./cart.js";
 import './service.js';
 
 //слайдер

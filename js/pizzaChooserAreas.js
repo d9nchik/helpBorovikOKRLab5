@@ -1,3 +1,5 @@
+import {cart, updateCart} from "./cart.js";
+
 (function () {
     const correspondentAreasAndURLs = [
         {area: '.pizza-area1', url: 'http://localhost:3000/pizzaJson1'},
@@ -17,6 +19,30 @@ async function getPizzaJson({area, url}) {
         document.querySelector(area).append(pizzaItem);
     })
 }
+
+let modalCount = 1
+let modalKey = 0;
+document.querySelector(".pizzaInfo--addButton").addEventListener("click", () => {
+    let size = Number(document.querySelector(".pizzaInfo--size.selected").getAttribute("data-key"))
+    let Ident = pizzaJson1[modalKey].id + "@" + size
+    let key = cart.findIndex((item) => item.Ident === Ident)
+    if (key > -1) {
+        const carKey = cart[key]
+        carKey.Quantidade += modalCount
+    } else {
+        cart.push({
+            Id: pizzaJson1[modalKey].id,
+            Ident,
+            Nome: pizzaJson1[modalKey].name,
+            Tamanho: size,
+            Quantidade: modalCount,
+        })
+    }
+    localStorage.setItem("session", JSON.stringify(cart))
+    console.log(cart)
+    updateCart()
+    closeModal()
+});
 
 function pizzaBlockGenerator(index, pizza, pizzaJson) {
     let pizzaItem = document.querySelector(".models .pizza-item").cloneNode(true)
@@ -61,3 +87,15 @@ function pizzaBlockGenerator(index, pizza, pizzaJson) {
     })
     return pizzaItem;
 }
+
+// зменшуємо і добавляємо кількість піц
+document.querySelector(".pizzaInfo--qtmenos").addEventListener("click", () => {
+    if (modalCount > 1) {
+        modalCount--
+        document.querySelector(".pizzaInfo--qt").innerHTML = modalCount
+    }
+})
+document.querySelector(".pizzaInfo--qtmais").addEventListener("click", () => {
+    modalCount++
+    document.querySelector(".pizzaInfo--qt").innerHTML = modalCount
+})
