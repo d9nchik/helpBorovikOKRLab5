@@ -1,20 +1,17 @@
-//Variaveis globais
+//Variables globals
 let modalCount = 1
 let modalKey = 0
-//парс елеентів із json
+//парс елементів із json
 let cart = JSON.parse(localStorage.getItem("session"))
     ? JSON.parse(localStorage.getItem("session"))
-    : []
-console.log(cart)
-const qs = (e) => document.querySelector(e)
-const qsa = (e) => document.querySelectorAll(e)
+    : [];
 
 async function getPizzaJson1() {
     let res = await fetch("http://localhost:3000/pizzaJson1")
     const pizzaJson1 = await res.json()
     pizzaJson1.map((pizza, index) => {
         let pizzaItem = pizzaBlockGenerator(index, pizza, pizzaJson1);
-        qs(".pizza-area1").append(pizzaItem);
+        document.querySelector(".pizza-area1").append(pizzaItem);
     })
 }
 
@@ -27,7 +24,7 @@ async function getPizzaJson2() {
     pizzaJson2.map((pizza, index) => {
         let pizzaItem = pizzaBlockGenerator(index, pizza, pizzaJson2);
 
-        qs(".pizza-area2").append(pizzaItem)
+        document.querySelector(".pizza-area2").append(pizzaItem)
     })
 }
 
@@ -38,45 +35,45 @@ async function getPizzaJson3() {
     const pizzaJson3 = await res.json()
     pizzaJson3.map((pizza, index) => {
         let pizzaItem = pizzaBlockGenerator(index, pizza, pizzaJson3);
-        qs(".pizza-area3").append(pizzaItem);
+        document.querySelector(".pizza-area3").append(pizzaItem);
     })
 }
 
 getPizzaJson3()
 
 const closeModal = () => {
-    qs(".pizzaWindowArea").style.opacity = 0
+    document.querySelector(".pizzaWindowArea").style.opacity = 0
     setTimeout(() => {
-        qs(".pizzaWindowArea").style.display = "none"
+        document.querySelector(".pizzaWindowArea").style.display = "none"
     }, 500)
 }
 
-qsa(".pizzaInfo--cancelMobileButton, .pizzaInfo--cancelButton").forEach(
+document.querySelectorAll(".pizzaInfo--cancelMobileButton, .pizzaInfo--cancelButton").forEach(
     (item) => {
         item.addEventListener("click", closeModal)
     }
 )
 // зменшуємо і добавляємо кількість піцц
-qs(".pizzaInfo--qtmenos").addEventListener("click", () => {
+document.querySelector(".pizzaInfo--qtmenos").addEventListener("click", () => {
     if (modalCount > 1) {
         modalCount--
-        qs(".pizzaInfo--qt").innerHTML = modalCount
+        document.querySelector(".pizzaInfo--qt").innerHTML = modalCount
     }
 })
-qs(".pizzaInfo--qtmais").addEventListener("click", () => {
+document.querySelector(".pizzaInfo--qtmais").addEventListener("click", () => {
     modalCount++
-    qs(".pizzaInfo--qt").innerHTML = modalCount
+    document.querySelector(".pizzaInfo--qt").innerHTML = modalCount
 })
 
-qsa(".pizzaInfo--size").forEach((size) => {
+document.querySelectorAll(".pizzaInfo--size").forEach((size) => {
     size.addEventListener("click", () => {
-        qs(".pizzaInfo--size.selected").classList.remove("selected")
+        document.querySelector(".pizzaInfo--size.selected").classList.remove("selected")
         size.classList.add("selected")
     })
 })
 
-qs(".pizzaInfo--addButton").addEventListener("click", () => {
-    let size = Number(qs(".pizzaInfo--size.selected").getAttribute("data-key"))
+document.querySelector(".pizzaInfo--addButton").addEventListener("click", () => {
+    let size = Number(document.querySelector(".pizzaInfo--size.selected").getAttribute("data-key"))
     let Ident = pizzaJson1[modalKey].id + "@" + size
     let key = cart.findIndex((item) => item.Ident === Ident)
     if (key > -1) {
@@ -97,27 +94,27 @@ qs(".pizzaInfo--addButton").addEventListener("click", () => {
     closeModal()
 })
 // якщо не пуста вона відображається
-qs(".menu-openner").addEventListener("click", () => {
+document.querySelector(".menu-openner").addEventListener("click", () => {
     if (cart.length > 0) {
-        qs("aside").style.left = "0"
+        document.querySelector("aside").style.left = "0"
     }
 })
-qs(".menu-closer").addEventListener(
+document.querySelector(".menu-closer").addEventListener(
     "click",
-    () => (qs("aside").style.left = "100vw")
+    () => (document.querySelector("aside").style.left = "100vw")
 )
 
 // корзина
 async function updateCart() {
     let res = await fetch("http://localhost:3000/pizzaJson1")
     const pizzaJson1 = await res.json()
-    qs(".menu-openner span").innerHTML = cart.length
+    document.querySelector(".menu-openner span").innerHTML = cart.length
 
     if (cart.length > 0) {
-        const carrinho = qs(".cart")
+        const carrinho = document.querySelector(".cart")
         carrinho.innerHTML = ""
 
-        qs("aside").classList.add("show")
+        document.querySelector("aside").classList.add("show")
 
         let subtotal = 0
         let desconto
@@ -125,7 +122,7 @@ async function updateCart() {
 
         for (let i in cart) {
             let pizzaItem = pizzaJson1.find((item) => item.id === cart[i].Id)
-            let cartItem = qs(".models .cart--item").cloneNode(true)
+            let cartItem = document.querySelector(".models .cart--item").cloneNode(true)
             let pizzaSizeName
             subtotal += pizzaItem.price * cart[i].Quantidade
             switch (cart[i].Tamanho) {
@@ -171,27 +168,27 @@ async function updateCart() {
         desconto = subtotal * 0.1
         total = subtotal - desconto
 
-        qs(".subtotal span:last-child").innerHTML = subtotal.toLocaleString(
+        document.querySelector(".subtotal span:last-child").innerHTML = subtotal.toLocaleString(
             "pt-BR",
             {
                 style: "currency",
                 currency: "EUR",
             }
         )
-        qs(".desconto span:last-child").innerHTML = desconto.toLocaleString(
+        document.querySelector(".desconto span:last-child").innerHTML = desconto.toLocaleString(
             "pt-BR",
             {
                 style: "currency",
                 currency: "EUR",
             }
         )
-        qs(".total span:last-child").innerHTML = total.toLocaleString("pt-BR", {
+        document.querySelector(".total span:last-child").innerHTML = total.toLocaleString("pt-BR", {
             style: "currency",
             currency: "EUR",
         })
     } else {
-        qs("aside").classList.remove("show")
-        qs("aside").style.left = "100vw"
+        document.querySelector("aside").classList.remove("show")
+        document.querySelector("aside").style.left = "100vw"
     }
 }
 
@@ -258,7 +255,7 @@ function doTask() {
 }
 
 function pizzaBlockGenerator(index, pizza, pizzaJson) {
-    let pizzaItem = qs(".models .pizza-item").cloneNode(true)
+    let pizzaItem = document.querySelector(".models .pizza-item").cloneNode(true)
     pizzaItem.setAttribute("data-key", index)
     pizzaItem.querySelector(".pizza-item--img img").src = pizza.img //Consegue-se usar a class e a tag num mesmo querySelector
     pizzaItem.querySelector(
@@ -277,27 +274,25 @@ function pizzaBlockGenerator(index, pizza, pizzaJson) {
         modalCount = 1
         modalKey = key
 
-        qs(".pizzaBig img").src = pizzaKey.img
-        qs(".pizzaInfo h1").innerHTML = pizzaKey.name
-        qs(".pizzaInfo--desc").innerHTML = pizzaKey.description
-        qs(
-            ".pizzaInfo--actualPrice"
-        ).innerHTML = pizzaKey.price.toLocaleString("pt-BR", {
+        document.querySelector(".pizzaBig img").src = pizzaKey.img
+        document.querySelector(".pizzaInfo h1").innerHTML = pizzaKey.name
+        document.querySelector(".pizzaInfo--desc").innerHTML = pizzaKey.description
+        document.querySelector(".pizzaInfo--actualPrice").innerHTML = pizzaKey.price.toLocaleString("pt-BR", {
             style: "currency",
             currency: "EUR",
         })
-        qs(".pizzaInfo--size.selected").classList.remove("selected")
-        qs(".pizzaInfo--qt").innerHTML = modalCount
-        qsa(".pizzaInfo--size").forEach((size, sizeIndex) => {
+        document.querySelector(".pizzaInfo--size.selected").classList.remove("selected")
+        document.querySelector(".pizzaInfo--qt").innerHTML = modalCount
+        document.querySelectorAll(".pizzaInfo--size").forEach((size, sizeIndex) => {
             if (sizeIndex === 2) size.classList.add("selected")
 
             size.querySelector("span").innerHTML = pizzaJson[key].sizes[sizeIndex]
         })
 
-        qs(".pizzaWindowArea").style.opacity = 0
-        qs(".pizzaWindowArea").style.display = "flex"
+        document.querySelector(".pizzaWindowArea").style.opacity = 0
+        document.querySelector(".pizzaWindowArea").style.display = "flex"
         setTimeout(() => {
-            qs(".pizzaWindowArea").style.opacity = 1
+            document.querySelector(".pizzaWindowArea").style.opacity = 1
         }, 200)
     })
     return pizzaItem;

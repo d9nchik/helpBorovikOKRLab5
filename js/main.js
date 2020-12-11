@@ -72,27 +72,27 @@ async function validateForm() {
         let currentUrl = location.href
         let newUrl = currentUrl.split("#")[0]
         location.href = newUrl + "#order"
-        qs(".orderId span:last-child").innerHTML = id.toLocaleString(
+        document.querySelector(".orderId span:last-child").innerHTML = id.toLocaleString(
             "pt-BR",
             {}
         )
 
-        qs(".orderPizzasList span:last-child").innerHTML = pizzas
+        document.querySelector(".orderPizzasList span:last-child").innerHTML = pizzas
             .join(",")
             .toLocaleString("pt-BR", {})
-        qs(".orderName span:last-child").innerHTML = name.toLocaleString(
+        document.querySelector(".orderName span:last-child").innerHTML = name.toLocaleString(
             "pt-BR",
             {}
         )
-        qs(".orderAdress span:last-child").innerHTML = address.toLocaleString(
+        document.querySelector(".orderAdress span:last-child").innerHTML = address.toLocaleString(
             "pt-BR",
             {}
         )
-        qs(".orderCity span:last-child").innerHTML = city.toLocaleString(
+        document.querySelector(".orderCity span:last-child").innerHTML = city.toLocaleString(
             "pt-BR",
             {}
         )
-        qs(".orderPhone span:last-child").innerHTML = phone.toLocaleString(
+        document.querySelector(".orderPhone span:last-child").innerHTML = phone.toLocaleString(
             "pt-BR",
             {}
         )
@@ -106,19 +106,19 @@ async function validateForm() {
 }
 
 function closeOrder() {
-    qs(".orderPage").style.display = "none"
+    document.querySelector(".orderPage").style.display = "none"
 }
 
 function showOrder() {
-    qs(".orderPage").style.display = "block"
+    document.querySelector(".orderPage").style.display = "block"
 }
 
 function showServerError() {
-    qs(".serverError").style.display = "block"
+    document.querySelector(".serverError").style.display = "block"
 }
 
 function hideServerError() {
-    qs(".serverError").style.display = "none"
+    document.querySelector(".serverError").style.display = "none"
 }
 
 // додає піци до html
