@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "server": "json-server --watch db.json",
-    "linter": "npx eslint src"
+    "linter": "npx eslint src",
+    "reformat": "prettier --write src/**/*.js"
   },
   "repository": {
     "type": "git",
