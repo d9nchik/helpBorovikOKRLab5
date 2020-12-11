@@ -8,40 +8,18 @@ let cart = JSON.parse(localStorage.getItem("session"))
 console.log(cart)
 const qs = (e) => document.querySelector(e)
 const qsa = (e) => document.querySelectorAll(e)
-const cl = (e) => console.log(e)
+
 // додає піци до html
-// window.addEventListener("hashchange", function (event) {
-//     console.log(event.target)
-//     let currentUrl = location.href //TODO how to redirect
-//     // let newUrl = currentUrl.split("#")[0]
-//     let newUrl = window.location.hash.substring(1)
-//     if (newUrl == ("catalog/" + "best" || "cheapest" || "cheff")) {
-//         var final = window.location.hash
-//             .substring(1)
-//             .substr(window.location.hash.substring(1).lastIndexOf("/") + 1)
-//         let element = document.getElementById(final)
-//         element.scrollIntoView()
-//     }
-//     let element = document.getElementById(window.location.hash.substring(1))
-//     if (!element) {
-//         // let currentUrl = location.href  //TODO how to redirect
-//         // let newUrl = currentUrl.split("#")[0]
-//         // location.href = newUrl
-//     } else {
-//         element.scrollIntoView()
-//     }
-// })
 function loadd() {
     let urlToCheck = window.location.href
-    if (urlToCheck.indexOf("?") == -1) {
+    if (urlToCheck.indexOf("?") === -1) {
         window.location.href += "?#"
     }
 }
-// 
+
 async function getPizzaJson1() {
     let res = await fetch("http://localhost:3000/pizzaJson1")
-    const data = await res.json()
-    pizzaJson1 = data
+    const pizzaJson1 = await res.json()
     pizzaJson1.map((pizza, index) => {
         let pizzaItem = qs(".models .pizza-item").cloneNode(true)
         pizzaItem.setAttribute("data-key", index)
@@ -75,10 +53,9 @@ async function getPizzaJson1() {
             qs(".pizzaInfo--size.selected").classList.remove("selected")
             qs(".pizzaInfo--qt").innerHTML = modalCount
             qsa(".pizzaInfo--size").forEach((size, sizeIndex) => {
-                if (sizeIndex == 2) size.classList.add("selected")
+                if (sizeIndex === 2) size.classList.add("selected")
 
-                const pizzaSizes = pizzaJson1[key].sizes[sizeIndex]
-                size.querySelector("span").innerHTML = pizzaSizes
+                size.querySelector("span").innerHTML = pizzaJson1[key].sizes[sizeIndex]
             })
 
             qs(".pizzaWindowArea").style.opacity = 0
@@ -91,12 +68,12 @@ async function getPizzaJson1() {
         qs(".pizza-area1").append(pizzaItem)
     })
 }
+
 getPizzaJson1()
 
 async function getPizzaJson2() {
     let res = await fetch("http://localhost:3000/pizzaJson2")
-    const data = await res.json()
-    pizzaJson2 = data
+    pizzaJson2 = await res.json()
     pizzaJson2.map((pizza, index) => {
         let pizzaItem = qs(".models .pizza-item").cloneNode(true)
         pizzaItem.setAttribute("data-key", index)
@@ -129,10 +106,9 @@ async function getPizzaJson2() {
             qs(".pizzaInfo--size.selected").classList.remove("selected")
             qs(".pizzaInfo--qt").innerHTML = modalCount
             qsa(".pizzaInfo--size").forEach((size, sizeIndex) => {
-                if (sizeIndex == 2) size.classList.add("selected")
+                if (sizeIndex === 2) size.classList.add("selected")
 
-                const pizzaSizes = pizzaJson2[key].sizes[sizeIndex]
-                size.querySelector("span").innerHTML = pizzaSizes
+                size.querySelector("span").innerHTML = pizzaJson2[key].sizes[sizeIndex]
             })
 
             qs(".pizzaWindowArea").style.opacity = 0
@@ -145,12 +121,12 @@ async function getPizzaJson2() {
         qs(".pizza-area2").append(pizzaItem)
     })
 }
+
 getPizzaJson2()
 
 async function getPizzaJson3() {
     let res = await fetch("http://localhost:3000/pizzaJson3")
-    const data = await res.json()
-    pizzaJson3 = data
+    pizzaJson3 = await res.json()
     pizzaJson3.map((pizza, index) => {
         let pizzaItem = qs(".models .pizza-item").cloneNode(true)
         pizzaItem.setAttribute("data-key", index)
@@ -183,10 +159,9 @@ async function getPizzaJson3() {
             qs(".pizzaInfo--size.selected").classList.remove("selected")
             qs(".pizzaInfo--qt").innerHTML = modalCount
             qsa(".pizzaInfo--size").forEach((size, sizeIndex) => {
-                if (sizeIndex == 2) size.classList.add("selected")
+                if (sizeIndex === 2) size.classList.add("selected")
 
-                const pizzaSizes = pizzaJson3[key].sizes[sizeIndex]
-                size.querySelector("span").innerHTML = pizzaSizes
+                size.querySelector("span").innerHTML = pizzaJson3[key].sizes[sizeIndex]
             })
 
             qs(".pizzaWindowArea").style.opacity = 0
@@ -199,6 +174,7 @@ async function getPizzaJson3() {
         qs(".pizza-area3").append(pizzaItem)
     })
 }
+
 getPizzaJson3()
 
 const closeModal = () => {
@@ -236,8 +212,6 @@ qs(".pizzaInfo--addButton").addEventListener("click", () => {
     let size = Number(qs(".pizzaInfo--size.selected").getAttribute("data-key"))
     let Ident = pizzaJson1[modalKey].id + "@" + size
     let key = cart.findIndex((item) => item.Ident === Ident)
-    let sum = modalCount * pizzaJson1[modalKey].price
-
     if (key > -1) {
         const carKey = cart[key]
         carKey.Quantidade += modalCount
@@ -265,11 +239,11 @@ qs(".menu-closer").addEventListener(
     "click",
     () => (qs("aside").style.left = "100vw")
 )
+
 // корзина
 async function updateCart() {
     let res = await fetch("http://localhost:3000/pizzaJson1")
-    const data = await res.json()
-    pizzaJson1 = data
+    pizzaJson1 = await res.json()
     qs(".menu-openner span").innerHTML = cart.length
 
     if (cart.length > 0) {
@@ -279,11 +253,11 @@ async function updateCart() {
         qs("aside").classList.add("show")
 
         let subtotal = 0
-        let desconto = 0
-        let total = 0
+        let desconto
+        let total
 
         for (let i in cart) {
-            let pizzaItem = pizzaJson1.find((item) => item.id == cart[i].Id)
+            let pizzaItem = pizzaJson1.find((item) => item.id === cart[i].Id)
             let cartItem = qs(".models .cart--item").cloneNode(true)
             let pizzaSizeName
             subtotal += pizzaItem.price * cart[i].Quantidade
@@ -359,6 +333,7 @@ let can = document.getElementById("can")
 can.style.width = window.screen.availWidth + "px"
 // верхнє меню
 can.style.height = window.screen.availHeight + "px"
+
 function gg() {
     var c = document.getElementById("can"),
         ctx = c.getContext("2d"),
@@ -371,7 +346,6 @@ function gg() {
         posX = [],
         posY = [],
         angle,
-        size,
         i
 
     window.setInterval(function () {
@@ -380,7 +354,7 @@ function gg() {
         for (i = 0; i < 9; i++) {
             ctx.beginPath()
             ctx.fillStyle = "rgba(240, 68, 0," + 0.1 * i + ")"
-            if (posX.length == i) {
+            if (posX.length === i) {
                 angle = pi * i * 0.25
                 posX[i] = xCenter + radius * Math.cos(angle)
                 posY[i] = yCenter + radius * Math.sin(angle)
@@ -397,13 +371,16 @@ function gg() {
         }
     }, 100)
 }
+
 gg()
+
 //відображення меню
 function ready() {
     setTimeout(() => (can.style = "display: none"), 1500)
 }
 
 document.addEventListener("DOMContentLoaded", ready)
+
 // оновлення корзини до нуля
 function doTask() {
     cart = []

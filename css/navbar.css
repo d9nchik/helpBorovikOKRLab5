@@ -477,8 +477,7 @@ h1 {
     border-top: 1px solid #79b9dd;
 }
 .orderPage {
-    margin: 30px 0;
-    margin-bottom: 450px;
+    margin: 30px 0 450px;
     display: none;
 }
 .serverError {
