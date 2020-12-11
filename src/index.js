@@ -1,8 +1,8 @@
-import './script.js';
-import './pizzaChooserAreas.js';
-import './cart.js';
-import './service.js';
-import './order.js';
+import './js/script.js';
+import './js/pizzaChooserAreas.js';
+import './js/cart.js';
+import './js/service.js';
+import './js/order.js';
 import M from 'minimatch';
 
 //слайдер
