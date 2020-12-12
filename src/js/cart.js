@@ -1,4 +1,5 @@
 import { closeModal } from './script.js';
+import { json1 } from './getJson.js';
 
 export let cart = JSON.parse(localStorage.getItem('session'))
     ? JSON.parse(localStorage.getItem('session'))
@@ -6,8 +7,7 @@ export let cart = JSON.parse(localStorage.getItem('session'))
 
 export async function updateCart() {
     //FIXME: should be used all products
-    let res = await fetch('http://localhost:3000/pizzaJson1');
-    const pizzaJson1 = await res.json();
+    const pizzaJson1 = await json1;
     document.querySelector('.menu-openner span').innerHTML = cart.length;
 
     if (cart.length > 0) {
@@ -119,3 +119,7 @@ export function doTask() {
 }
 
 document.querySelector('.cart--finalizar').addEventListener('click', doTask);
+
+export function setCart(value) {
+    cart = value;
+}

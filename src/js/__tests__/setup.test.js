@@ -206,6 +206,8 @@ require('babel-polyfill');
 })();
 
 Element.prototype.scrollTo = () => {};
+HTMLCanvasElement.prototype.getContext = () => {};
+window.alert = () => {};
 test('test load', () => {
     expect(true).toBeTruthy();
 });
