@@ -200,6 +200,75 @@ require('babel-polyfill');
         </div>
     </div>
 </div>
+<div class="parallax-container">
+    <div class="parallax">
+        <img src="img/clients/background.jpg">
+    </div>
+    <section id="Stocks">
+        <div class="container">
+            <div class="row">
+
+
+            </div>
+        </div>
+    </section>
+    <section id="services">
+        <div class="container">
+            <h4 class="center light white-text">Services</h4>
+            <div class="row">
+                <div class="col12">
+                    <ul class="service">
+                        <li>
+                            <div class="col s4" id="dine">
+                                <div class="card-panel center"><i class="medium material-icons">restaurant_menu</i>
+                                    <br>
+                                    <span>DINE IN</span></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col s4">
+                                <div class="card-panel center"><i class="medium material-icons">shop</i><br><span>TAKE IN</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col s4">
+                                <div class="card-panel center"><i
+                                        class="medium material-icons">shopping_cart</i><br><span>DELIVERY</span></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col s12 m6" id="service_content">
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+<div class="navbar-fixed ">
+    <nav class="deep-orange">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">
+                    <img src="./img/img.png" alt="">
+                </a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#about_us">About Us</a></li>
+                    <li><a href="#clients">Clients</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a class="oury" href="#catalog">Our Menu</a></li>
+                    <li><a class="acti" href="#acti">Stocks</a></li>
+                    <li>
+                        <div class="menu-openner"><span>0</span></div>
+                    </li>
+                    <li><a class="pizzochka" href="#basket">🍕</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
 
     `;
     jest.mock('../getJson');
@@ -207,6 +276,7 @@ require('babel-polyfill');
 })();
 
 Element.prototype.scrollTo = () => {};
+window.scrollTo = () => {};
 HTMLCanvasElement.prototype.getContext = () => {};
 window.alert = () => {};
 test('test load', () => {
