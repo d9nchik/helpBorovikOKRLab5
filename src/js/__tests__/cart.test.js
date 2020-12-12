@@ -1,6 +1,5 @@
 import './setup.test.js';
 import { cart, doTask, setCart, updateCart } from '../cart';
-import * as assert from 'assert';
 
 test('test cart displaying', async () => {
     const cartSpan = document.querySelector(
