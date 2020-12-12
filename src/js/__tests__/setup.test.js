@@ -3,7 +3,6 @@ require('babel-polyfill');
 (function () {
     document.body.innerHTML = `
     <canvas id="can">
-
 </canvas>
 <div class="navbar-fixed ">
     <nav class="deep-orange">
