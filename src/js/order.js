@@ -1,20 +1,22 @@
+import { sendData } from './sendData';
+
 async function validateForm(e) {
     e.preventDefault();
-    let name = document.orderForm.name.value;
-    let address = document.orderForm.address.value;
-    let city = document.orderForm.city.value;
-    let state = document.orderForm.state.value;
-    let phone = document.orderForm.phone.value;
-    if (nonEmpty(name)) {
+    let name = document.getElementById('name').value;
+    let address = document.getElementById('address').value;
+    let city = document.getElementById('city').value;
+    let state = document.getElementById('state').value;
+    let phone = document.getElementById('phone').value;
+    if (isEmpty(name)) {
         alert("Name field can't be blank.");
         return false;
-    } else if (nonEmpty(address)) {
+    } else if (isEmpty(address)) {
         alert("Address field can't be blank.");
         return false;
-    } else if (nonEmpty(city)) {
+    } else if (isEmpty(city)) {
         alert("City field can't be blank.");
         return false;
-    } else if (nonEmpty(state)) {
+    } else if (isEmpty(state)) {
         alert("State field can't be blank.");
         return false;
     } else if (
@@ -32,20 +34,14 @@ async function validateForm(e) {
         JSON.parse(localStorage.getItem('session')).forEach(element => {
             pizzas.push(element.Nome);
         });
-        await fetch(' http://localhost:3000/completedOrders', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                id,
-                pizzas: pizzas.join(','),
-                name,
-                address,
-                city,
-                state,
-                phone,
-            }),
+        await sendData({
+            id,
+            pizzas: pizzas.join(','),
+            name,
+            address,
+            city,
+            state,
+            phone,
         });
         showOrder();
 
@@ -80,7 +76,7 @@ async function validateForm(e) {
     }
 }
 
-function closeOrder() {
+export function closeOrder() {
     document.querySelector('.orderPage').style.display = 'none';
 }
 
@@ -88,7 +84,7 @@ function showOrder() {
     document.querySelector('.orderPage').style.display = 'block';
 }
 
-function showServerError() {
+export function showServerError() {
     document.querySelector('.serverError').style.display = 'block';
 }
 
@@ -96,7 +92,7 @@ function hideServerError() {
     document.querySelector('.serverError').style.display = 'none';
 }
 
-function nonEmpty(item) {
+export function isEmpty(item) {
     return item === null || item === '';
 }
 

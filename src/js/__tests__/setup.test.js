@@ -203,6 +203,7 @@ require('babel-polyfill');
 
     `;
     jest.mock('../getJson');
+    jest.mock('../sendData');
 })();
 
 Element.prototype.scrollTo = () => {};
