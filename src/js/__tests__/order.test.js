@@ -1,7 +1,7 @@
 import './setup.test.js';
 import { isEmpty, showServerError } from '../order';
 
-test('test nonEmpty', () => {
+test('test isEmpty', () => {
     expect(isEmpty('')).toBeTruthy();
     expect(isEmpty(null)).toBeTruthy();
     expect(isEmpty('1')).toBeFalsy();
